@@ -6,6 +6,9 @@
     <title>Reigniell Ann L. Bayani | Computer Science Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,100..900;9..144,1,100..900&display=swap');
+
         /* Enhanced Professional Theme */
         :root {
             --muted-red: #A05252;
@@ -51,6 +54,7 @@
         }
 
         h1, h2, h3, h4 {
+            font-family: 'Fraunces', serif; /* Updated: Warm, hand-crafted editorial look */
             font-weight: 700;
             line-height: 1.3;
             letter-spacing: -0.5px;
@@ -585,12 +589,14 @@
         }
 
         .project-card {
-            background: white;
+            background: rgba(255, 255, 255, 0.65); /* Translucent background */
+            backdrop-filter: blur(10px);           /* Glassmorphism blur effect */
+            -webkit-backdrop-filter: blur(10px);   /* Safari support */
             padding: 35px;
-            border-radius: 20px;
+            border-radius: 40px 10px 40px 10px;
             box-shadow: var(--shadow);
             transition: var(--transition);
-            border: 1px solid rgba(138, 154, 91, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.4); /* Softens the glass border edge */
             position: relative;
             overflow: hidden;
         }
@@ -606,7 +612,7 @@
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-10px) rotate(-1deg); /* Updated: Added premium -1deg tilt */
             box-shadow: 0 25px 50px rgba(44, 62, 80, 0.12);
             border-color: rgba(138, 154, 91, 0.2);
         }
@@ -622,6 +628,7 @@
             color: var(--muted-red);
             font-size: 2rem;
             margin: 0 auto 25px;
+            transition: var(--transition); /* Added: Smoothes out the icon scaling */
         }
 
         .project-card h3 {
@@ -655,12 +662,17 @@
         }
 
         .certificate-card {
-            background: white;
+            background: rgba(255, 255, 255, 0.65); /* Translucent background */
+            backdrop-filter: blur(10px);           /* Glassmorphism blur effect */
+            -webkit-backdrop-filter: blur(10px);   /* Safari support */
             padding: 30px;
-            border-radius: 20px;
+            border-radius: 40px 10px 40px 10px;
             box-shadow: var(--shadow);
             transition: var(--transition);
             border-left: 5px solid var(--matcha);
+            border-top: 1px solid rgba(255, 255, 255, 0.4);
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             position: relative;
             overflow: hidden;
         }
@@ -676,10 +688,16 @@
         }
 
         .certificate-card:hover {
-            transform: translateY(-8px);
+            ttransform: translateY(-8px) rotate(-1deg);  /* Updated: Added premium -1deg tilt */
             box-shadow: 0 20px 40px rgba(44, 62, 80, 0.1);
         }
 
+        /* Paste it right here: */
+        .project-card:hover .project-icon,
+        .certificate-card:hover .certificate-icon {
+            transform: scale(1.1);
+        }
+        
         .certificate-header {
             display: flex;
             align-items: center;
@@ -700,6 +718,7 @@
             color: var(--muted-red);
             font-size: 1.5rem;
             flex-shrink: 0;
+            transition: var(--transition); /* Added: Smoothes out the icon scaling */
         }
 
         .certificate-title {
@@ -1600,19 +1619,36 @@
                 <div class="project-icon">
                     <i class="fas fa-robot"></i>
                 </div>
-                <h3>Computer Vision Battle Robot</h3>
+                <h3>Robotics Battle Bot</h3>
                 <p style="color: var(--matcha); font-weight: 600; margin-bottom: 10px;">
-                    <i class="fas fa-tv"></i> Computer Vision Finals
+                    <i class="fas fa-tv"></i> Robotics Finals
                 </p>
-                <p>Engineered and programmed a physical robot integrated with computer vision for an arena combat competition, focusing on autonomous object detection and tactical movement.</p>
+                <p>Engineered and programmed a physical robot for an arena combat competition, focusing on autonomous object detection and tactical movement.</p>
                 <div class="project-tech">
-                    <span class="tech-tag">Computer Vision</span>
                     <span class="tech-tag">Robotics</span>
                     <span class="tech-tag">Node.js</span>
                     <span class="tech-tag">Hardware Integration</span>
                 </div>
             </div>
 
+            <!-- Project: Style IQ -->
+                <div class="project-card fade-in delay-4">
+                    <div class="project-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h3>Style IQ</h3>
+                    <p style="color: var(--matcha); font-weight: 600; margin-bottom: 10px;">
+                        <i class="fas fa-magic"></i> Computer Vision Project
+                    </p>
+                    <p>An AI-powered fashion assistant that uses computer vision to analyze clothing textures, colors, and patterns, providing personalized, aesthetic-driven styling recommendations.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Computer Vision</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Deep Learning</span>
+                        <span class="tech-tag">React</span>
+                    </div>
+                </div>
+            
             <!-- Project: Portfolio Website -->
             <div class="project-card fade-in delay-4">
                 <div class="project-icon">
@@ -1749,6 +1785,35 @@
         <p class="section-subtitle fade-in delay-1">Continuous learning and professional development</p>
         
         <div class="certificates-grid">
+            <!-- LearnKey Data Analytics Certification -->
+            <div class="certificate-card fade-in delay-1">
+                <div class="certificate-header">
+                    <div class="certificate-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <div>
+                        <div class="certificate-title">Data Analytics Certification</div>
+                        <div class="certificate-issuer">LearnKey</div>
+                        <div class="certificate-date">November 2025</div>
+                    </div>
+                </div>
+                
+                <div class="certificate-preview">
+                    <img src="assets/certificates/learnkey-data-analytics.jpg" alt="LearnKey Data Analytics Certificate">
+                </div>
+                
+                <div class="certificate-details">
+                    Completed comprehensive validation in foundational data analytics pathways, focusing on data cleaning techniques, statistical analysis frameworks, data modeling, and translating raw datasets into actionable business intelligence.
+                </div>
+                
+                <div class="certificate-topics">
+                    <span class="topic-tag">Data Analytics</span>
+                    <span class="topic-tag">LearnKey</span>
+                    <span class="topic-tag">Data Modeling</span>
+                    <span class="topic-tag">Statistical Analysis</span>
+                    <span class="topic-tag">Business Intelligence</span>
+                </div>
+            </div>
             <!-- CCS Robotics Competition -->
             <div class="certificate-card fade-in delay-2">
                 <div class="certificate-header">
