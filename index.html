@@ -1354,24 +1354,60 @@
         .delay-4 { animation-delay: 0.4s; }
         .delay-5 { animation-delay: 0.5s; }
 
-        /* Full Immersive Zen Section with Code-Generated Blossoms */
-.zen-section {
+/* Container for your Objective Statement */
+.objective-section {
     position: relative;
-    margin: 100px auto;
-    max-width: 1100px;
-    height: 280px;
-    background: linear-gradient(to bottom, #FAF7F2, #EBF0E6); /* Soft cream to light matcha transition */
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    border-radius: 40px 10px 40px 10px; /* Signature asymmetric Maker silhouette */
+    background: rgba(255, 255, 255, 0.65); /* Translucent glassmorphism background */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 40px 10px 40px 10px; /* Signature Maker border */
     border: 1px solid rgba(138, 154, 91, 0.3);
+    padding: 50px 40px;
+    margin: 40px auto 80px;
+    max-width: 900px;
     box-shadow: var(--shadow);
-    padding: 40px;
+    text-align: center;
 }
 
+/* Ensure objective text stays perfectly readable on top of falling flowers */
+.objective-content {
+    position: relative;
+    z-index: 2;
+}
+
+.objective-content p {
+    font-family: 'Fraunces', serif;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: var(--dark);
+    margin: 0;
+}
+
+/* The Subtle 'Raining' True Blossoms & Petals Waterfall Effect */
+.waterfall-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Code-generated 5-petal cherry blossoms & drifting leaves using your colors */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='200' viewBox='0 0 150 200'%3E%3Cg transform='translate(40, 40) rotate(12)'%3E%3Ccircle cx='0' cy='-8' r='6' fill='%23A05252' fill-opacity='0.12'/%3E%3Ccircle cx='8' cy='-3' r='6' fill='%23A05252' fill-opacity='0.12'/%3E%3Ccircle cx='5' cy='6' r='6' fill='%23A05252' fill-opacity='0.12'/%3E%3Ccircle cx='-5' cy='6' r='6' fill='%23A05252' fill-opacity='0.12'/%3E%3Ccircle cx='-8' cy='-3' r='6' fill='%23A05252' fill-opacity='0.12'/%3E%3Ccircle cx='0' cy='0' r='4' fill='%23E8EDE0' fill-opacity='0.3'/%3E%3C/g%3E%3Cg transform='translate(100, 120) rotate(-25)'%3E%3Ccircle cx='0' cy='-6' r='5' fill='%238A9A5B' fill-opacity='0.12'/%3E%3Ccircle cx='6' cy='-2' r='5' fill='%238A9A5B' fill-opacity='0.12'/%3E%3Ccircle cx='4' cy='4' r='5' fill='%238A9A5B' fill-opacity='0.12'/%3E%3Ccircle cx='-4' cy='4' r='5' fill='%238A9A5B' fill-opacity='0.12'/%3E%3Ccircle cx='-6' cy='-2' r='5' fill='%238A9A5B' fill-opacity='0.12'/%3E%3Ccircle cx='0' cy='0' r='3' fill='%23FAF7F2' fill-opacity='0.3'/%3E%3C/g%3E%3Cpath d='M20,130 Q25,120 30,135 Q20,145 20,130 Z' fill='%238A9A5B' fill-opacity='0.1' transform='rotate(15, 25, 132)'/%3E%3Cpath d='M120,50 Q123,42 128,53 Q120,62 120,50 Z' fill='%23A05252' fill-opacity='0.1' transform='rotate(-30, 124, 51)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    animation: flowerRain 16s linear infinite;
+    pointer-events: none; /* User can highlight text through the overlay */
+}
+
+/* Beautiful seamless slow vertical drift downwards */
+@keyframes flowerRain {
+    0% {
+        background-position: 0px 0px;
+    }
+    100% {
+        background-position: 0px 400px;
+    }
+}
+        
 /* The Subtle 'Raining' Organic Petal Waterfall Effect */
 .waterfall-overlay {
     position: absolute;
@@ -1432,6 +1468,50 @@
     .zen-section p {
         font-size: 1rem;
     }
+}
+        /* Premium Glassmorphic Resume Button */
+.resume-cta-container {
+    text-align: center;
+    margin: 80px auto;
+    padding: 20px;
+}
+
+.btn-resume {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--dark);
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 16px 36px;
+    border-radius: 30px 10px 30px 10px; /* Matching asymmetric Maker silhouette */
+    border: 1px solid rgba(138, 154, 91, 0.4);
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.btn-resume i {
+    color: var(--muted-red);
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+/* Hover Dynamics */
+.btn-resume:hover {
+    transform: translateY(-5px) rotate(1deg); /* Playful counter-tilt */
+    background: var(--faf7f2);
+    border-color: var(--muted-red);
+    box-shadow: 0 15px 30px rgba(44, 62, 80, 0.15);
+}
+
+.btn-resume:hover i {
+    transform: translateY(3px); /* Subtle downward arrow bounce */
 }
         /* Premium Glassmorphic Resume Button */
 .resume-cta-container {
@@ -1902,15 +1982,6 @@
         </div>
     </section>
 
-    <!-- Immersive Animated Zen Transition Section -->
-    <section class="zen-section fade-in">
-        <div class="waterfall-overlay"></div>
-        <div class="zen-content">
-            <h3>Connected to Nature</h3>
-            <p>Bridging the structural precision of technology with the fluid patterns of the environment. <br>Inspired by the Sierra Madre.</p>
-        </div>
-    </section>
-        
 <!-- Certificates -->
 <section id="certificates" style="background: white;">
     <div class="container">
@@ -2423,6 +2494,14 @@
         </div>
     </div>
 
+    <!-- Interactive Resume Download Section -->
+    <div class="resume-cta-container fade-in">
+        <a href="assets/reigniell-resume.pdf" download class="btn-resume">
+            <i class="fas fa-file-download"></i>
+            Download Professional CV / Resume
+        </a>
+    </div>
+    
     <script>
         // Enhanced JavaScript for professional interactions
         const menuToggle = document.getElementById('menuToggle');
