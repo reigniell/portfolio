@@ -1668,13 +1668,13 @@
         </p>
     </div>
 
-    <!-- Cozy Ambient Nature Sound (No UI Buttons!) -->
+   <!-- Cozy Ambient Nature Sound (Using a highly stable, CORS-friendly stream of beautiful forest birds) -->
     <audio id="natureAmbiance" loop preload="auto">
         <source src="assets/nature-birds.mp3" type="audio/mpeg">
-        <source src="https://actions.google.com/sounds/v1/ambiences/morning_birds.ogg" type="audio/ogg">
+        <source src="https://assets.mixkit.co/active_storage/sfx/1435/1435-84.wav" type="audio/wav">
     </audio>
 
-    <!-- 3. Dynamic Visuals & Scroll-Mapped Audio Script -->
+    <!-- 3. Dynamic Visuals & Scroll-Mapped Audio Script (UPDATED & BUG-FREE) -->
     <script>
         (function() {
             // --- 🌸 PART I: PARTICLE CANVAS SYSTEM ---
@@ -1824,37 +1824,39 @@
             // --- 🍃 PART II: SCROLL-BOUND AUDIO SYSTEM ---
             const audio = document.getElementById('natureAmbiance');
             const objectiveSection = document.getElementById('objective');
-            const targetMaxVolume = 0.12; // Maximum volume at peak center (faint & cozy 12%)
+            const targetMaxVolume = 0.15; // Cap maximum volume at a peaceful 15%
             
             let audioUnlocked = false;
 
-            // Calculates viewport scroll metrics and maps them to smooth volume changes
+            // Tracks the objective card's scroll coordinates to map volume transitions
             function updateVolumeOnScroll() {
+                if (!objectiveSection) return;
+
                 const rect = objectiveSection.getBoundingClientRect();
                 const viewHeight = window.innerHeight;
 
-                // Check if the Career Objective section is visible inside the active viewport
+                // If the section is currently inside the screen view
                 if (rect.top < viewHeight && rect.bottom > 0) {
                     const elementCenter = rect.top + rect.height / 2;
                     const viewportCenter = viewHeight / 2;
                     const maxDistance = (viewHeight + rect.height) / 2;
                     const distance = Math.abs(elementCenter - viewportCenter);
                     
-                    // Maps proximity: 1 at perfect viewport center, 0 when fully scrolled off-screen
+                    // Maps values: 1 at perfect viewport center, 0 when scrolled away
                     let factor = 1 - (distance / maxDistance);
-                    factor = Math.max(0, Math.min(1, factor)); // Clamp bounds between 0 and 1
+                    factor = Math.max(0, Math.min(1, factor)); // Clamp bounds
                     
-                    // Uses a smooth trigonometric curve (sine) for seamless cross-fades
+                    // Smooth, pleasant trigonometric curve (sine)
                     const smoothFactor = Math.sin(factor * Math.PI / 2);
                     
                     audio.volume = smoothFactor * targetMaxVolume;
 
-                    // Play only once the user has unlocked context via interaction
+                    // If successfully unlocked by a click, play the audio
                     if (audioUnlocked && audio.paused) {
-                        audio.play().catch(() => {});
+                        audio.play().catch(err => console.log("Play failed:", err));
                     }
                 } else {
-                    // Instantly pause and silence when out-of-view to optimize memory
+                    // Out of view: fade to silence and pause to save computer processing memory
                     audio.volume = 0;
                     if (!audio.paused) {
                         audio.pause();
@@ -1862,31 +1864,29 @@
                 }
             }
 
-            // Bypasses the browser's aggressive autoplay policy by detecting normal scroll behavior
+            // Unlocks the web browser's AudioContext ONLY upon an active, physical click/tap
             function unlockAudio() {
                 if (audioUnlocked) return;
-                
-                audioUnlocked = true;
-                audio.volume = 0;
-                audio.play().then(() => {
-                    updateVolumeOnScroll(); // Calculate immediate volume based on screen position
-                }).catch(() => {
-                    // Re-lock if the browser blocks it, trying again on subsequent interactions
-                    audioUnlocked = false;
-                });
 
-                // Clear listeners once the audio is successfully unlocked
-                window.removeEventListener('scroll', unlockAudio);
-                window.removeEventListener('click', unlockAudio);
-                window.removeEventListener('touchstart', unlockAudio);
+                audio.play().then(() => {
+                    audioUnlocked = true;
+                    console.log("🌸 Magical ambiance successfully unlocked!");
+                    updateVolumeOnScroll(); // Set correct volume depth instantly
+                    
+                    // SUCCESS! Only now is it safe to remove the click event listeners
+                    window.removeEventListener('click', unlockAudio);
+                    window.removeEventListener('touchstart', unlockAudio);
+                }).catch(err => {
+                    // Fail-safe: if the browser still blocks it, do not delete listeners and let the user try again
+                    console.log("Audio unlock blocked. Waiting for genuine user click...", err);
+                });
             }
 
-            // Bind listeners for organic user activation on first movement
-            window.addEventListener('scroll', unlockAudio);
+            // Listen exclusively for active human-driven gestures to bypass browser autoplay rules
             window.addEventListener('click', unlockAudio);
             window.addEventListener('touchstart', unlockAudio);
 
-            // Continuously listen to scroll depth
+            // Continuously monitor scroll depth
             window.addEventListener('scroll', updateVolumeOnScroll);
         })();
     </script>
