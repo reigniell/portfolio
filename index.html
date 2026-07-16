@@ -1628,22 +1628,24 @@
     <!-- 1. The Interactive Magical Fairy Canvas -->
     <canvas id="fairyCanvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none;"></canvas>
 
-    <!-- 2. The Cozy Card Holder -->
+    <!-- 2. The Cozy Card Holder (Harmonized with your theme colors) -->
     <div class="objective-card" style="
         position: relative; 
         z-index: 2; 
         background: rgba(255, 255, 255, 0.96); 
         border-radius: 24px; 
-        border: 1px solid rgba(160, 82, 82, 0.15); 
+        /* Uses your site's muted red color for a delicate border */
+        border: 1px solid rgba(184, 92, 92, 0.15); 
         padding: 3.5rem 2.5rem; 
         max-width: 800px; 
         margin: 0 auto; 
-        box-shadow: 0 15px 35px rgba(160, 82, 82, 0.05); 
+        /* Soft, warm shadow using a muted red tint */
+        box-shadow: 0 15px 35px rgba(184, 92, 92, 0.05); 
         text-align: center;
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
     ">
-        <!-- Inside Card: Title -->
+        <!-- Inside Card: Title (Matches your brand's muted red logo!) -->
         <h2 style="
             font-size: 2.2rem; 
             color: var(--muted-red, #b85c5c); 
@@ -1664,20 +1666,13 @@
             font-family: inherit;
             font-weight: 400;
         ">
-            An ambitious, detail-oriented incoming graduate eager to excel as a professional Front-End Developer. Deeply passionate about the artistry of the browser, I dedicate my technical competencies to architecting semantic, accessible user interfaces, writing scalable modular code, and translating complex concepts into highly responsive, interactive web solutions that prioritize the human experience.
+            An innovative Front-End Developer specializing in Intelligent Systems, dedicated to pushing the boundaries of what is possible through clean architecture and creative design.
         </p>
     </div>
 
-   <!-- Cozy Ambient Nature Sound (Using a highly stable, CORS-friendly stream of beautiful forest birds) -->
-    <audio id="natureAmbiance" loop preload="auto">
-        <source src="assets/nature-birds.mp3" type="audio/mpeg">
-        <source src="https://assets.mixkit.co/active_storage/sfx/1435/1435-84.wav" type="audio/wav">
-    </audio>
-
-    <!-- 3. Dynamic Visuals & Scroll-Mapped Audio Script (UPDATED & BUG-FREE) -->
+    <!-- 3. Updated Particle Physics Script (Draws full 5-petal flowers!) -->
     <script>
         (function() {
-            // --- 🌸 PART I: PARTICLE CANVAS SYSTEM ---
             const canvas = document.getElementById('fairyCanvas');
             const ctx = canvas.getContext('2d');
             const parent = canvas.parentElement;
@@ -1712,8 +1707,8 @@
                     this.x = Math.random() * canvas.width;
                     this.y = initial ? (Math.random() * canvas.height) : -20;
                     this.type = ['flower', 'leaf', 'sparkle'][Math.floor(Math.random() * 3)];
-                    this.size = Math.random() * 6 + 7;
-                    this.speedY = Math.random() * 0.6 + 0.4;
+                    this.size = Math.random() * 6 + 7; // Slightly larger for clear flower shapes
+                    this.speedY = Math.random() * 0.6 + 0.4; // Soft mystical drift
                     this.speedX = Math.random() * 0.4 - 0.2;
                     this.angle = Math.random() * 360;
                     this.spin = Math.random() * 0.6 - 0.3;
@@ -1723,12 +1718,12 @@
 
                     if (this.type === 'flower') {
                         const mutedRed = getComputedStyle(document.documentElement).getPropertyValue('--muted-red').trim() || '#b85c5c';
-                        this.color = [mutedRed, '#d98b8b'][Math.floor(Math.random() * 2)];
+                        this.color = [mutedRed, '#d98b8b'][Math.floor(Math.random() * 2)]; // Matches website color scheme
                     } else if (this.type === 'leaf') {
                         const matcha = getComputedStyle(document.documentElement).getPropertyValue('--matcha').trim() || '#8a9a5b';
                         this.color = [matcha, '#a3b899'][Math.floor(Math.random() * 2)];
                     } else {
-                        this.color = ['#ffe57f', '#fff176'][Math.floor(Math.random() * 2)];
+                        this.color = ['#ffe57f', '#fff176'][Math.floor(Math.random() * 2)]; // Gold sparkles
                     }
                 }
 
@@ -1765,6 +1760,7 @@
                     }
 
                     if (this.type === 'flower') {
+                        // Draw a beautiful 5-petal cherry blossom flower
                         const numPetals = 5;
                         ctx.fillStyle = this.color;
                         ctx.beginPath();
@@ -1777,12 +1773,14 @@
                         ctx.closePath();
                         ctx.fill();
 
+                        // Add a tiny glowing golden core in the center
                         ctx.beginPath();
                         ctx.arc(0, 0, this.size / 4, 0, Math.PI * 2);
                         ctx.fillStyle = '#ffe57f';
                         ctx.fill();
 
                     } else if (this.type === 'leaf') {
+                        // Curved Matcha Leaf shape
                         ctx.fillStyle = this.color;
                         ctx.beginPath();
                         ctx.moveTo(0, -this.size);
@@ -1792,6 +1790,7 @@
                         ctx.fill();
 
                     } else {
+                        // Gold Star Sparkle
                         ctx.fillStyle = this.color;
                         ctx.beginPath();
                         for (let i = 0; i < 4; i++) {
@@ -1819,75 +1818,6 @@
                 requestAnimationFrame(animate);
             }
             animate();
-
-
-            // --- 🍃 PART II: SCROLL-BOUND AUDIO SYSTEM ---
-            const audio = document.getElementById('natureAmbiance');
-            const objectiveSection = document.getElementById('objective');
-            const targetMaxVolume = 0.15; // Cap maximum volume at a peaceful 15%
-            
-            let audioUnlocked = false;
-
-            // Tracks the objective card's scroll coordinates to map volume transitions
-            function updateVolumeOnScroll() {
-                if (!objectiveSection) return;
-
-                const rect = objectiveSection.getBoundingClientRect();
-                const viewHeight = window.innerHeight;
-
-                // If the section is currently inside the screen view
-                if (rect.top < viewHeight && rect.bottom > 0) {
-                    const elementCenter = rect.top + rect.height / 2;
-                    const viewportCenter = viewHeight / 2;
-                    const maxDistance = (viewHeight + rect.height) / 2;
-                    const distance = Math.abs(elementCenter - viewportCenter);
-                    
-                    // Maps values: 1 at perfect viewport center, 0 when scrolled away
-                    let factor = 1 - (distance / maxDistance);
-                    factor = Math.max(0, Math.min(1, factor)); // Clamp bounds
-                    
-                    // Smooth, pleasant trigonometric curve (sine)
-                    const smoothFactor = Math.sin(factor * Math.PI / 2);
-                    
-                    audio.volume = smoothFactor * targetMaxVolume;
-
-                    // If successfully unlocked by a click, play the audio
-                    if (audioUnlocked && audio.paused) {
-                        audio.play().catch(err => console.log("Play failed:", err));
-                    }
-                } else {
-                    // Out of view: fade to silence and pause to save computer processing memory
-                    audio.volume = 0;
-                    if (!audio.paused) {
-                        audio.pause();
-                    }
-                }
-            }
-
-            // Unlocks the web browser's AudioContext ONLY upon an active, physical click/tap
-            function unlockAudio() {
-                if (audioUnlocked) return;
-
-                audio.play().then(() => {
-                    audioUnlocked = true;
-                    console.log("🌸 Magical ambiance successfully unlocked!");
-                    updateVolumeOnScroll(); // Set correct volume depth instantly
-                    
-                    // SUCCESS! Only now is it safe to remove the click event listeners
-                    window.removeEventListener('click', unlockAudio);
-                    window.removeEventListener('touchstart', unlockAudio);
-                }).catch(err => {
-                    // Fail-safe: if the browser still blocks it, do not delete listeners and let the user try again
-                    console.log("Audio unlock blocked. Waiting for genuine user click...", err);
-                });
-            }
-
-            // Listen exclusively for active human-driven gestures to bypass browser autoplay rules
-            window.addEventListener('click', unlockAudio);
-            window.addEventListener('touchstart', unlockAudio);
-
-            // Continuously monitor scroll depth
-            window.addEventListener('scroll', updateVolumeOnScroll);
         })();
     </script>
 </section>
