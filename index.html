@@ -1493,6 +1493,46 @@
 .btn-resume:hover i {
     transform: translateY(3px); /* Subtle downward arrow bounce */
 }
+        /* --- MICRO-INTERACTION STYLES --- */
+
+/* 1. Muted-Red Ripple Effect */
+.ripple-effect {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(184, 92, 92, 0.35); /* Soft version of your --muted-red */
+    transform: scale(0);
+    animation: ripple-animation 0.6s ease-out;
+    pointer-events: none;
+    z-index: 99;
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* 2. Magnetic Smooth Transition */
+.magnetic-item {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
+}
+
+/* 3. Scroll-Driven Fade-In Effect */
+.reveal-section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s cubic-bezier(0.215, 0.610, 0.355, 1), 
+                transform 1s cubic-bezier(0.215, 0.610, 0.355, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
     </style>
 </head>
 <body>
@@ -2758,5 +2798,89 @@
             });
         });
     </script>
+    <!-- --- MICRO-INTERACTION SCRIPTS --- -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        // 🌊 1. MUTED-RED RIPPLE EFFECT
+        // Targets navigation links, buttons, and social icons automatically
+        const interactiveElements = document.querySelectorAll('nav a, .btn, .project-card, .social-icon, .nav-menu a');
+        
+        interactiveElements.forEach(elem => {
+            // Ensure elements are prepped to hold absolute position ripples
+            if (window.getComputedStyle(elem).position === 'static') {
+                elem.style.position = 'relative';
+            }
+            elem.style.overflow = 'hidden';
+
+            elem.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                const ripple = document.createElement('span');
+                ripple.className = 'ripple-effect';
+                ripple.style.width = ripple.style.height = `${size}px`;
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                
+                this.appendChild(ripple);
+                
+                ripple.addEventListener('animationend', () => {
+                    ripple.remove();
+                });
+            });
+        });
+
+
+        // 🧲 2. MAGNETIC HOVER SCRIPT
+        // Targets navigation items and contact buttons to pull toward cursor
+        const magneticElements = document.querySelectorAll('nav a, .social-icon, .btn');
+        
+        magneticElements.forEach(elem => {
+            elem.classList.add('magnetic-item');
+            
+            elem.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                // Find distance between cursor and center of button
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                // Pulls the button slightly toward cursor (strength: 0.35)
+                this.style.transform = `translate(${x * 0.35}px, ${y * 0.35}px)`;
+            });
+            
+            elem.addEventListener('mouseleave', function() {
+                // Instantly snaps back to center when cursor leaves
+                this.style.transform = 'translate(0px, 0px)';
+            });
+        });
+
+
+        // ✨ 3. HIGH-PERFORMANCE SCROLL REVEAL (IntersectionObserver)
+        // Automatically reveals and slides up your main sections as you scroll
+        const observerOptions = {
+            threshold: 0.08, // Starts revealing when 8% of section is visible
+            rootMargin: "0px 0px -50px 0px" // Triggers slightly before scrolling into viewport
+        };
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Stops observing once revealed to save memory
+                }
+            });
+        }, observerOptions);
+
+        // Auto-assigns the effect to major sections on your page
+        const sectionsToAnimate = document.querySelectorAll('section, .project-card, .education-card');
+        sectionsToAnimate.forEach(section => {
+            section.classList.add('reveal-section');
+            revealObserver.observe(section);
+        });
+    });
+</script>
 </body>
 </html>
