@@ -1678,9 +1678,13 @@
                     this.swaySpeed = Math.random() * 0.015 + 0.005;
                     this.swayOffset = Math.random() * 100;
 
-                    if (this.type === 'petal') {
-                        this.color = ['#ffccd5', '#ffb7c5'][Math.floor(Math.random() * 2)]; // Sakura pinks
-                    } else if (this.type === 'leaf') {
+                   if (this.type === 'petal') {
+    // 1. Grab your exact theme's muted red color directly from your CSS variables!
+    const mutedRed = getComputedStyle(document.documentElement).getPropertyValue('--muted-red').trim() || '#c25a5a';
+
+    // 2. Mix it with a slightly lighter dusty rose shade for organic depth in the wind
+    this.color = [mutedRed, '#d98b8b'][Math.floor(Math.random() * 2)];
+} else if (this.type === 'leaf') {
                         this.color = ['#a3b899', '#8a9a5b'][Math.floor(Math.random() * 2)]; // Fresh matcha greens
                     } else {
                         this.color = ['#ffe57f', '#fff176'][Math.floor(Math.random() * 2)]; // Glowing gold stars
