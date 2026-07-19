@@ -588,9 +588,8 @@
     display: grid;
     /* This forces exactly 2 columns of equal width */
     grid-template-columns: repeat(2, 1fr); 
-    gap: 30px; /* Keeps a nice spacing between your cards */
-    max-width: 1200px;
-    margin: 0 auto;
+    align-items: stretch;
+    gap: 30px;
 }
 
 /* Optional: Make it stack nicely on mobile screens */
@@ -2106,28 +2105,30 @@
                     <i class="fas fa-gears"></i> Data Engineering &amp; Automation
                 </p>
                 <p>Engineered an end-to-end data pipeline automating agricultural quality control and asset valuation. Utilizes strict Pydantic modeling to validate 10,000+ telemetry points, enforces programmatic crop tiering, and outputs active greenhouse remediation overrides.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Pandas</span>
-                    <span class="tech-tag">Pydantic</span>
-                    <span class="tech-tag">Plotly</span>
-                    <span class="tech-tag">Data Engineering</span>
-                </div>
-                <div style="margin-top: 15px; display: flex; flex-wrap: wrap; gap: 8px;">
-                    <a href="assets/Agritech_Project_Report.pdf" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; color: var(--matcha); text-decoration: none; font-weight: 600; font-size: 0.9rem; border: 1.5px solid var(--matcha); padding: 6px 12px; border-radius: 6px; transition: all 0.3s ease;">
-                        <i class="fas fa-file-pdf"></i> Report
-                    </a>
-                    <a href="assets/flower_dataset.csv" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; color: var(--matcha); text-decoration: none; font-weight: 600; font-size: 0.9rem; border: 1.5px solid var(--matcha); padding: 6px 12px; border-radius: 6px; transition: all 0.3s ease;">
-                        <i class="fas fa-database"></i> Dataset
-                    </a>
-                    <a href="assets/summary_report.txt" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; color: var(--matcha); text-decoration: none; font-weight: 600; font-size: 0.9rem; border: 1.5px solid var(--matcha); padding: 6px 12px; border-radius: 6px; transition: all 0.3s ease;">
-                        <i class="fas fa-file-alt"></i> Summary
-                    </a>
-                    <a href="assets/clean_crop_predictions.csv" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; color: var(--matcha); text-decoration: none; font-weight: 600; font-size: 0.9rem; border: 1.5px solid var(--matcha); padding: 6px 12px; border-radius: 6px; transition: all 0.3s ease;">
-                        <i class="fas fa-chart-line"></i> Predictions
-                    </a>
-                </div>
-            </div>
+               <div class="project-tech">
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">Pandas</span>
+        <span class="tech-tag">Pydantic</span>
+        <span class="tech-tag">Plotly</span>
+        <span class="tech-tag">Data Engineering</span>
+    </div>
+    
+    <!-- PLACED HERE: Updated container with row-gap to prevent buttons from overlapping -->
+    <div style="margin-top: 15px; display: flex; flex-wrap: wrap; gap: 8px; row-gap: 12px;">
+        <a href="assets/Agritech_Project_Report.pdf" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; color: var(--matcha); text-decoration: none; font-weight: 600; font-size: 0.9rem; border: 1.5px solid var(--matcha); padding: 6px 12px; border-radius: 6px; transition: all 0.3s ease;">
+            <i class="fas fa-file-pdf"></i> Report
+        </a>
+        <a href="assets/flower_dataset.csv" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; color: var(--matcha); text-decoration: none; font-weight: 600; font-size: 0.9rem; border: 1.5px solid var(--matcha); padding: 6px 12px; border-radius: 6px; transition: all 0.3s ease;">
+            <i class="fas fa-database"></i> Dataset
+        </a>
+        <a href="assets/summary_report.txt" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; color: var(--matcha); text-decoration: none; font-weight: 600; font-size: 0.9rem; border: 1.5px solid var(--matcha); padding: 6px 12px; border-radius: 6px; transition: all 0.3s ease;">
+            <i class="fas fa-file-alt"></i> Summary
+        </a>
+        <a href="assets/clean_crop_predictions.csv" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; color: var(--matcha); text-decoration: none; font-weight: 600; font-size: 0.9rem; border: 1.5px solid var(--matcha); padding: 6px 12px; border-radius: 6px; transition: all 0.3s ease;">
+            <i class="fas fa-chart-line"></i> Predictions
+        </a>
+    </div>
+</div>
         </div> <!-- Closes .projects-grid -->
     </div> <!-- Closes .container -->
 </section>
@@ -2705,7 +2706,7 @@
             </div>
             
             <div class="copyright">
-                <p>&copy; 2026 Reigniell Ann L. Bayani. Full-Stack Developer • Computer Science • Crafting reliable software with purpose.</p>
+                <p>&copy; 2026 Reigniell Ann L. Bayani. Front-End Web Developer • Computer Science • Crafting reliable software with purpose.</p>
                 <p style="margin-top: 10px; font-size: 0.85rem;">Laguna State Polytechnic University | Seeking Full-Time Front-End Web Development Opportunities</p>
             </div>
         </div> <!-- Fixed: Added missing closing container div -->
