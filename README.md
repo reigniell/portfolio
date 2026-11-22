@@ -76,7 +76,7 @@ A fully responsive, custom-built portfolio website showcasing my technical proje
 - **Microsoft Cybersecurity** — TESDA Online Program
 - **Microsoft Azure AI Fundamentals** — TESDA Online Program
 - **Computer Systems Servicing** — TESDA Online Program
-- **Operating System Basics** — Cisco Networking Academy (2025–2026)
+- **Operating System Basics** — TESDA Online Program
 
 ### **Competitions & Specialized Training**
 - **CCS Robotics Competition** — Laguna State Polytechnic University (2025)
