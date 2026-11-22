@@ -44,7 +44,7 @@ A responsive, custom-built portfolio website showcasing my skills, projects, and
 ## 💼 Experience
 
 - **Internal Audit Intern (OJT)**, LSPU Internal Audit Unit, Jan – Apr 2026 (440 hours)
-- **Crafter, Reign's Craft** (own business), 2020 – Present
+- **Owner & Crafter, Reign's Craft**, 2020 – Present
 - **Makeup Artist**, 2020 – Present
 - **Pastry Assistant and Vendor**, 2020 – Present
 
