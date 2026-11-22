@@ -91,7 +91,7 @@ A fully responsive, custom-built portfolio website showcasing my technical proje
 - Assisted with internal audit documentation, compliance verification, and records organization
 - Applied data handling and office automation workflows to support audit operations
 
-### **Founder & Creative Crafter — Reign's Craft** | *2024 – Present*
+### **Founder & Creative Crafter — Reign's Craft** | *2020 – Present*
 *Victoria, Laguna*
 - Design and produce handmade satin, fuzzy wire, and paper floral arrangements alongside custom crafts
 - Manage client orders, inventory, customization, and quality control
