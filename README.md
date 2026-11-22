@@ -58,7 +58,7 @@ A fully responsive, custom-built portfolio website showcasing my technical proje
 
 ## 📚 Education
 
-### **Laguna State Polytechnic University – Sta. Cruz Campus** (2022 – 2026)
+### **Laguna State Polytechnic University – Sta. Cruz Campus** (2022 – 2027)
 - **Degree**: Bachelor of Science in Computer Science, Major in Intelligent Systems
 - **Focus**: Artificial Intelligence, Machine Learning, Expert Systems, Software Engineering
 
